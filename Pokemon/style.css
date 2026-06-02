@@ -1,14 +1,18 @@
-body {
+/* Configuração Geral e Layout */
+body { 
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background-color: #d1d1d1;
     margin: 0;
+    flex-wrap: wrap;
     font-family: 'Arial', sans-serif;
+    padding-bottom: 70px;
 }
 
-.container {
+/* Estilização dos Cards */
+.container { 
     background-color: #ffcb05;
     border: 12px solid #3b4cca;
     border-radius: 20px;
@@ -19,8 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 10px; /* Adiciona margem em volta de cada card */
-    
+    margin: 10px;
 }
 
 .stats-container {
@@ -41,11 +44,12 @@ label {
     font-size: 1.5em;
 }
 
+/* Interface de Busca */
 .search-box {
-    display: flex;
+    display: flex; 
     align-items: center;
     justify-content: center;
-    gap: 8px; /* Espaço entre o input e a pokebola */
+    gap: 8px;
     margin-top: 10px;
 }
 
@@ -53,8 +57,6 @@ label {
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
-    transition: transform 0.2s;
 }
 
 .btn-pokebola img {
@@ -74,19 +76,29 @@ label {
     width: 160px;
 }
 
-.Diferença {
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 0.9em;
-}
-
-footer{
+/* Rodapé Eletrizante */
+footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #3b4cca;
-    padding: 10px 0;
+    background: linear-gradient(90deg, #3b4cca, #ffcb05, #3b4cca);
+    background-size: 200% auto;
+    color: #fff;
     text-align: center;
-    color: white;
+    padding: 15px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 -5px 25px rgba(59, 76, 202, 0.8);
+    text-shadow: 0 0 10px #fff, 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: brilhoEletrico 3s linear infinite;
+    border-top: 4px solid #ffcb05;
+    z-index: 1000;
+}
+
+@keyframes brilhoEletrico {
+    0% { background-position: 0% 50%; filter: brightness(1); }
+    50% { background-position: 100% 50%; filter: brightness(1.4); }
+    100% { background-position: 0% 50%; filter: brightness(1); }
 }

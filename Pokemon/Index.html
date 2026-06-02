@@ -7,29 +7,21 @@
             <link rel="stylesheet" href="style.css">
         </head>
         <body>
+            <!-- Primeiro Card de Pokémon -->
             <div class="container">
                 <form id="CardPokemon1">
                     <label for="personagens">Nome do Pokémon:</label> <br>
-
                     <div class="search-box">
-                        <!-- Campo de texto para consulta -->
                         <input type="text" id="personagens" name="personagens" placeholder="Ex: Pikachu" required>
-                        <!-- Lista de personagens, este muda se selecionar a flag exibirLista -->
                         <select id="listaPersonagens" style="display: none;"></select>
-                        
                         <button type="submit" class="btn-pokebola">
                             <img src="../assest/pokebola.png" alt="Pokébola">
                         </button> 
-                        
-                        <input type="checkbox" id="exibirLista">
+                        <input type="checkbox" id="exibirLista"> 
                         <label for="exibirLista" style="font-size: 12px;"> Exibir Lista</label><br>
-
                     </div>
-                    
                     <br>
-
                     <img src="../assest/pokebola.png" alt="Pokemon" id="imagempkn" style="width: 220px; height: 220px;">
-
                     <h3>Nome: <span id="Nomepkn"> </span></h3>
                     <h3>Tipo: <span id="Tipopkn"> </span></h3>
                     <h3>HP:<span id="HPpkn"> </span> <span id="HPrest" class="Diferença"></span></h3>
@@ -38,32 +30,23 @@
                     <h3>Velocidade: <span id="SPDpkn"> </span> <span id="SPDrest" class="Diferença"></span></h3>
                 </form>
             </div>
-                <!-- Segunda Carta para consulta e Validação -->
+            <!-- Segundo Card de Pokémon -->
             <div class="container">
                 <form id="CardPokemon2">
                     <label for="personagens2">Nome do Pokémon:</label> <br>
-
                     <div class="search-box">
-                        <!-- Campo de texto 2 para consulta -->
                         <input type="text" id="personagens2" name="personagens2" placeholder="Ex: Pikachu" required> 
-                        <!-- Lista de personagens 2, este muda se selecionar a flag 2 exibirLista -->
-                        <select id="listaPersonagens2" style="display: none;"></select> 
-
+                        <select id="listaPersonagens2" style="display: none;"></select>
                         <button type="submit" class="btn-pokebola">
                             <img src="../assest/pokebola.png" alt="Pokébola">
                         </button>
-
                         <input type="checkbox" id="exibirLista2">
                         <label for="exibirLista2" style="font-size: 12px;"> Exibir Lista</label><br>
                     </div>
-                    
                     <br>
-
                     <img src="../assest/pokebola.png" alt="Pokemon" id="imagempkn2" style="width: 220px; height: 220px;">
-
                     <h3>Nome: <span id="Nomepkn2"> </span></h3>
                     <h3>Tipo: <span id="Tipopkn2"> </span></h3>
-
                     <h3>HP:<span id="HPpkn2"> </span> <span id="HPrest2" class="Diferença"></span></h3>
                     <h3>Ataque: <span id="ATKpkn2"> </span> <span id="ATKrest2" class="Diferença"></span></h3>
                     <h3>Defesa: <span id="DEFpkn2"> </span> <span id="DEFrest2" class="Diferença"></span></h3>
@@ -73,5 +56,4 @@
             <script src="script.js"></script>
             <footer>Modelo de Carta para comparar Pokémons</footer>
         </body>
-        <footer>edicao em grupo</footer>
 </html>

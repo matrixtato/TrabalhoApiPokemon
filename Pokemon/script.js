@@ -1,3 +1,4 @@
+// Seleção dos elementos da interface
 const form1 = document.getElementById("CardPokemon1");
 const form2 = document.getElementById("CardPokemon2");
 const checkboxLista = document.getElementById("exibirLista");
@@ -7,13 +8,12 @@ const campoTexto2 = document.getElementById("personagens2");
 const comboLista = document.getElementById("listaPersonagens");
 const comboLista2 = document.getElementById("listaPersonagens2");
 
-// Função para carregar a lista de nomes da API
+// Busca a lista inicial de Pokémons para o Select
 async function carregarLista(elementoCombo) {
     try {
         const resposta = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
         const dados = await resposta.json();
         
-        // Ordena a lista alfabeticamente pelo nome
         const listaOrdenada = dados.results.sort((a, b) => a.name.localeCompare(b.name));
 
         elementoCombo.innerHTML = listaOrdenada
@@ -24,13 +24,13 @@ async function carregarLista(elementoCombo) {
     }
 }
 
-// Alternar entre Input e Select
+// Controle de alternância entre Input de Texto e Select
 checkboxLista.addEventListener("change", function() {
     if (this.checked) {
         campoTexto.style.display = "none";
         campoTexto.required = false;
         comboLista.style.display = "inline-block";
-        if (comboLista.options.length === 0) carregarLista(comboLista);
+        if (comboLista.options.length === 0) carregarLista(comboLista); 
     } else {
         campoTexto.style.display = "block";
         campoTexto.required = true;
@@ -38,7 +38,6 @@ checkboxLista.addEventListener("change", function() {
     }
 });
 
-// Alternar entre Input e Select
 checkboxLista2.addEventListener("change", function() {
     if (this.checked) {
         campoTexto2.style.display = "none";
@@ -52,22 +51,20 @@ checkboxLista2.addEventListener("change", function() {
     }
 });
 
-// Escuta o primeiro formulário
+// Listeners para submissão dos formulários
 form1.addEventListener("submit", function(evento){
     evento.preventDefault();
-    // Pega o valor do input de texto ou do select, dependendo de qual está visível
     const nome = checkboxLista.checked ? comboLista.value : campoTexto.value;
-    buscarPersonagens(nome, ""); // Sem sufixo para o primeiro card
+    buscarPersonagens(nome, "");
 });
 
-// Escuta o segundo formulário
 form2.addEventListener("submit", function(evento){
     evento.preventDefault();
-    // const nome = document.getElementById("personagens2").value;
     const nome = checkboxLista2.checked ? comboLista2.value : campoTexto2.value;
-    buscarPersonagens(nome, "2"); // Sufixo "2" para o segundo card
+    buscarPersonagens(nome, "2");
 });
 
+// Busca detalhes do Pokémon e atualiza o Card
 async function buscarPersonagens(nome, sufixo) {
     const url = `https://pokeapi.co/api/v2/pokemon/${nome.toLowerCase()}`;
     try {
@@ -77,7 +74,6 @@ async function buscarPersonagens(nome, sufixo) {
         }
         const dados = await resposta.json();
 
-        // Preenche os campos usando o sufixo para identificar qual card atualizar
         document.getElementById(`imagempkn${sufixo}`).src = dados.sprites.front_default;
         document.getElementById(`Nomepkn${sufixo}`).textContent = dados.name;
         document.getElementById(`HPpkn${sufixo}`).textContent = dados.stats[0].base_stat;
@@ -86,18 +82,16 @@ async function buscarPersonagens(nome, sufixo) {
         document.getElementById(`SPDpkn${sufixo}`).textContent = dados.stats[5].base_stat;
         document.getElementById(`Tipopkn${sufixo}`).textContent = dados.types[0].type.name;
 
-        // Chamar a função de comparação sempre que um Pokémon for carregado
         compararStats();
-
     } catch (erro) {
         console.error("falha na comunicação", erro);
         alert("Pokémon não encontrado!");
     }
 }
 
+// Compara os atributos entre os dois Pokémons carregados
 function compararStats() {
     const atributos = ["HP", "ATK", "DEF", "SPD"];
-
     atributos.forEach(attr => {
         const val1 = parseInt(document.getElementById(`${attr}pkn`).textContent);
         const val2 = parseInt(document.getElementById(`${attr}pkn2`).textContent);
@@ -108,7 +102,7 @@ function compararStats() {
         if (!isNaN(val1) && !isNaN(val2)) {
             const diff1 = val1 - val2;
             campoRes1.textContent = ` -------> ${diff1 > 0 ? "+" : ""}${diff1}`;
-            campoRes1.style.color = diff1 > 0 ? "green" : (diff1 < 0 ? "red" : "black");
+            campoRes1.style.color = diff1 > 0 ? "green" : (diff1 < 0 ? "red" : "black"); 
 
             const diff2 = val2 - val1;
             campoRes2.textContent = ` -------> ${diff2 > 0 ? "+" : ""}${diff2}`;
